@@ -1,0 +1,11 @@
+{% load i18n static %}
+<div class="col">
+{% if request.user in obj.players.all %}
+
+                    <button name="{{ obj.pk }}" id="add" style="display: none" class="btn btn-primary">{% trans 'Участвовать' %}</button>
+                    <button name="{{ obj.pk }}" id="delete" style="display: block" class="btn btn-primary">{% trans 'Покинуть' %}</button>
+    {% else %}
+         <button name="{{ obj.pk }}" id="add" style="display: block" class="btn btn-primary">{% trans 'Участвовать' %}</button>
+                    <button name="{{ obj.pk }}" id="delete" style="display: none" class="btn btn-primary">{% trans 'Покинуть' %}</button>
+    {% endif %}
+</div>

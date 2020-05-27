@@ -1,0 +1,54 @@
+{% extends  'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n static %}
+{% block main %}
+<div class="card-body">
+
+    {% now "Ymd" as current_data %}
+    {% now "H:i" as current_time %}
+    {% for obj in object_list %}
+
+    <div data-id="{{ obj.pk }}">
+        </div>
+    <div class="row  mt-4 border-bottom border-light border-3 p-3">
+
+        <div class="col-sm tournament">
+            <a href="{% url 'tournaments:detail' obj.pk %}">{{ obj.title }}</a>
+            {% if obj.closing_date|date:"Ymd" > current_data %}
+                <p>Время закрытие регистрации: {{ obj.closing_date }} {{ obj.closing_time }}</p>
+                </div>
+                {% include 'chess_room/includes/inc_button.html' %}
+
+            {% else %}
+                {% if obj.closing_date|date:"Ymd" == current_data %}
+                    {% if obj.closing_time|date:"H:i" >= current_time %}
+
+                        <p>Время закрытие регистрации: {{ obj.closing_date }} {{ obj.closing_time }}</p>
+                    </div>
+                    {% include 'chess_room/includes/inc_button.html' %}
+
+                    {% else %}
+                        <p>Регистрация закрыта</p>
+                        <p>Время проведения турнира: {{ obj.closing_date }} {{ obj.closing_time }}</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <p>Регистрация закрыта</p>
+                    <p>Время проведения турнира: {{ obj.closing_date }} {{ obj.closing_time }}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% csrf_token %}
+<script>
+    if(!!window.performance && window.performance.navigation.type == 2)
+{
+    window.location.reload();
+}
+</script>
+
+<script src="{% static 'js/tournament-util.js' %}"></script>
+{% endblock %}

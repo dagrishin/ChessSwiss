@@ -1,0 +1,30 @@
+{% extends  'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block main %}
+
+        <div class="page-item">
+            <div class="row-cols-1"><h1>{{object}}</h1></div>
+            {% if object.players.all %}
+            <div class="row">
+            <div class="col">
+            <h2>Участники:</h2>
+            <ul>
+            {% for player in object.players.all %}
+
+                <li>{{player}}</li>
+            {% endfor %}
+            </ul>
+            </div>
+            </div>
+            {% endif %}
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
