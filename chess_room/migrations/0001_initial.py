@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,36 +14,115 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tournament',
+            name="Tournament",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('closing_date', models.DateTimeField(verbose_name='Дата закрытия регистрации')),
-                ('is_open', models.BooleanField(default=True, verbose_name='Статус решистрации')),
-                ('number_of_tours', models.IntegerField(verbose_name='Количество туров в турнире')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='organizer', to=settings.AUTH_USER_MODEL, verbose_name='Организатор')),
-                ('players', models.ManyToManyField(to=settings.AUTH_USER_MODEL, verbose_name='Участники')),
-                ('tournament', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parent', to='chess_room.Tournament')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "closing_date",
+                    models.DateTimeField(verbose_name="Дата закрытия регистрации"),
+                ),
+                (
+                    "is_open",
+                    models.BooleanField(
+                        default=True, verbose_name="Статус решистрации"
+                    ),
+                ),
+                (
+                    "number_of_tours",
+                    models.IntegerField(verbose_name="Количество туров в турнире"),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="organizer",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Организатор",
+                    ),
+                ),
+                (
+                    "players",
+                    models.ManyToManyField(
+                        to=settings.AUTH_USER_MODEL, verbose_name="Участники"
+                    ),
+                ),
+                (
+                    "tournament",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="parent",
+                        to="chess_room.Tournament",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='TournamentResult',
+            name="TournamentResult",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('result', models.FloatField()),
-                ('additional_indicator', models.FloatField()),
-                ('tour', models.IntegerField()),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('tournament', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chess_room.Tournament')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("result", models.FloatField()),
+                ("additional_indicator", models.FloatField()),
+                ("tour", models.IntegerField()),
+                (
+                    "player",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "tournament",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="chess_room.Tournament",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Player',
+            name="Player",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tour', models.IntegerField()),
-                ('result', models.FloatField()),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('tournament', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chess_room.Tournament')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tour", models.IntegerField()),
+                ("result", models.FloatField()),
+                (
+                    "player",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "tournament",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="chess_room.Tournament",
+                    ),
+                ),
             ],
         ),
     ]

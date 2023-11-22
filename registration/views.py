@@ -12,11 +12,11 @@ from .models import User
 
 
 class Login(SuccessMessageMixin, LoginView):
-    success_message = _('Вошли в систему')
+    success_message = _("Вошли в систему")
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    success_message = _('Вы вышли из системы')
+    success_message = _("Вы вышли из системы")
 
     def get_next_page(self):
         next_page = super().get_next_page()
@@ -26,9 +26,8 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 
 class AccountCreate(SuccessMessageMixin, CreateView):
-
     model = User
     form_class = UserRegisterForm
-    template_name = 'registration/registration.html'
-    success_url = reverse_lazy('auth:login')
-    success_message = 'Вы успешно зарегестрировались'
+    template_name = "registration/registration.html"
+    success_url = reverse_lazy("auth:login")
+    success_message = "Вы успешно зарегестрировались"
