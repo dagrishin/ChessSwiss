@@ -1,12 +1,8 @@
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.db import IntegrityError
 from django.http import HttpResponseRedirect, JsonResponse
 from django.middleware.csrf import CsrfViewMiddleware
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import View
 
 from chess_room.forms import CreateTournamentForm
@@ -59,16 +55,11 @@ class AddUserTournament(CsrfViewMiddleware, LoginRequiredMixin, View):
             user = request.user
             tournament_add = Tournament.objects.get(id=kwargs["pk"])
             tournament_add.players.add(user)
-            # try:
-            #     pass
-            # except IntegrityError as error:
-            #     result = error
-
             return JsonResponse({"result": result})
 
 
 class DelUserTournament(CsrfViewMiddleware, LoginRequiredMixin, View):
-    """Класс удаления пользователей из турнир"""
+    """Класс удаления пользователей из турнира"""
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -76,9 +67,5 @@ class DelUserTournament(CsrfViewMiddleware, LoginRequiredMixin, View):
             user = request.user
             tournament_add = Tournament.objects.get(id=kwargs["pk"])
             tournament_add.players.remove(user)
-            # try:
-            #     pass
-            # except IntegrityError as error:
-            #     result = error
 
             return JsonResponse({"result": result})
