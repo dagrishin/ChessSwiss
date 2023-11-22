@@ -1,6 +1,5 @@
 # ChessSwiss Tournament Manager
 
-'''
 # ChessSwiss is a web-based tournament manager for organizing Swiss-system chess tournaments using Django.
 # This tool ensures fair pairings and prevents players from playing multiple times with different colors.
 
@@ -79,6 +78,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 - Thanks to the [Python](https://www.python.org/) and [Django](https://www.djangoproject.com/) communities for their support.
-'''
-
-
