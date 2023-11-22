@@ -4,20 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('chess_room', '0001_initial'),
+        ("chess_room", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tournament',
-            name='closing_time',
-            field=models.TimeField(auto_now=True, verbose_name='Время закрытия регистрации'),
+            model_name="tournament",
+            name="closing_time",
+            field=models.TimeField(
+                auto_now=True, verbose_name="Время закрытия регистрации"
+            ),
         ),
         migrations.AlterField(
-            model_name='tournament',
-            name='closing_date',
-            field=models.DateField(auto_now=True, verbose_name='Дата закрытия регистрации'),
+            model_name="tournament",
+            name="closing_date",
+            field=models.DateField(
+                auto_now=True, verbose_name="Дата закрытия регистрации"
+            ),
         ),
     ]

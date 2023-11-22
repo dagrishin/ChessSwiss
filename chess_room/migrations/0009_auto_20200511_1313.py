@@ -8,32 +8,46 @@ from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('chess_room', '0008_auto_20200511_1046'),
+        ("chess_room", "0008_auto_20200511_1046"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tournamentresult',
-            name='rival',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='rival_user', to=settings.AUTH_USER_MODEL),
+            model_name="tournamentresult",
+            name="rival",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="rival_user",
+                to=settings.AUTH_USER_MODEL,
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='tournament',
-            name='closing_date',
-            field=models.DateField(default=datetime.datetime(2020, 5, 11, 8, 12, 59, 340567, tzinfo=utc), verbose_name='Дата закрытия регистрации'),
+            model_name="tournament",
+            name="closing_date",
+            field=models.DateField(
+                default=datetime.datetime(2020, 5, 11, 8, 12, 59, 340567, tzinfo=utc),
+                verbose_name="Дата закрытия регистрации",
+            ),
         ),
         migrations.AlterField(
-            model_name='tournament',
-            name='closing_time',
-            field=models.TimeField(default=datetime.datetime(2020, 5, 11, 8, 12, 59, 340567, tzinfo=utc), verbose_name='Время закрытия регистрации'),
+            model_name="tournament",
+            name="closing_time",
+            field=models.TimeField(
+                default=datetime.datetime(2020, 5, 11, 8, 12, 59, 340567, tzinfo=utc),
+                verbose_name="Время закрытия регистрации",
+            ),
         ),
         migrations.AlterField(
-            model_name='tournamentresult',
-            name='player',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='player_user', to=settings.AUTH_USER_MODEL),
+            model_name="tournamentresult",
+            name="player",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="player_user",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

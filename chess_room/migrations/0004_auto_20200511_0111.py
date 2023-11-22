@@ -6,26 +6,31 @@ from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('chess_room', '0003_auto_20200511_0110'),
+        ("chess_room", "0003_auto_20200511_0110"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tournament',
-            name='title',
+            model_name="tournament",
+            name="title",
             field=models.CharField(default=1, max_length=200),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='tournament',
-            name='closing_date',
-            field=models.DateField(default=datetime.datetime(2020, 5, 10, 20, 11, 37, 593647, tzinfo=utc), verbose_name='Дата закрытия регистрации'),
+            model_name="tournament",
+            name="closing_date",
+            field=models.DateField(
+                default=datetime.datetime(2020, 5, 10, 20, 11, 37, 593647, tzinfo=utc),
+                verbose_name="Дата закрытия регистрации",
+            ),
         ),
         migrations.AlterField(
-            model_name='tournament',
-            name='closing_time',
-            field=models.TimeField(default=datetime.datetime(2020, 5, 10, 20, 11, 37, 593647, tzinfo=utc), verbose_name='Время закрытия регистрации'),
+            model_name="tournament",
+            name="closing_time",
+            field=models.TimeField(
+                default=datetime.datetime(2020, 5, 10, 20, 11, 37, 593647, tzinfo=utc),
+                verbose_name="Время закрытия регистрации",
+            ),
         ),
     ]

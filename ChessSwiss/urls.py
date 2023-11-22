@@ -20,11 +20,11 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('registration.urls', namespace='auth')),
-    path('tournaments/', include('chess_room.urls', namespace='tournaments')),
+    path("admin/", admin.site.urls),
+    path("auth/", include("registration.urls", namespace="auth")),
+    path("tournaments/", include("chess_room.urls", namespace="tournaments")),
     # path('parsing/', include('textapp.urls', namespace='text-parsing')),
-    path('', TemplateView.as_view(template_name="base.html"))
+    path("", TemplateView.as_view(template_name="base.html")),
 ]
 
 if settings.DEBUG:
